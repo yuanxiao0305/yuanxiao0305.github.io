@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="meta.title">Yuanxiao</title>
+    <meta
+      name="description"
+      content="I am Yuanxiao, a white Napoleon cat with a serious homepage, a favorite spot near the desk, and a long-term dream of becoming a computer science PhD. Meow."
+      data-i18n-attr="content:meta.description"
+    >
+    <meta name="theme-color" content="#c5523f">
+    <meta property="og:title" content="Yuanxiao" data-i18n-attr="content:meta.ogTitle">
+    <meta
+      property="og:description"
+      content="I am Yuanxiao. I was chosen on February 11, 2025, came home on March 5, 2025, and I want to become a computer science PhD like my dad, Xin. Meow."
+      data-i18n-attr="content:meta.ogDescription"
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yuanxiao0305.github.io/">
+    <meta
+      property="og:image"
+      content="https://yuanxiao0305.github.io/assets/yuanxiao-avatar.jpg"
+    >
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="orb orb-left" aria-hidden="true"></div>
+    <div class="orb orb-right" aria-hidden="true"></div>
+
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="site-brand" href="#top" data-i18n="brand">Yuanxiao</a>
+
+        <div class="header-actions">
+          <nav
+            class="site-nav"
+            aria-label="Main navigation"
+            data-i18n-attr="aria-label:nav.ariaLabel"
+          >
+            <a href="#about" data-i18n="nav.about">About</a>
+            <a href="#timeline" data-i18n="nav.timeline">Timeline</a>
+            <a href="#research" data-i18n="nav.research">Research</a>
+            <a href="#life" data-i18n="nav.life">Life</a>
+            <a href="#links" data-i18n="nav.links">Links</a>
+          </nav>
+
+          <div
+            class="lang-switch"
+            role="group"
+            aria-label="Language switcher"
+            data-i18n-attr="aria-label:lang.switchAria"
+          >
+            <button type="button" class="lang-button is-active" data-lang-option="en" aria-pressed="true">
+              EN
+            </button>
+            <button type="button" class="lang-button" data-lang-option="zh" aria-pressed="false">
+              中文
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" id="top">
+          <div class="hero-copy" data-reveal>
+            <p class="eyebrow" data-i18n="hero.eyebrow">GitHub Pages for @yuanxiao0305</p>
+            <h1 data-i18n="hero.name">Yuanxiao</h1>
+            <p class="hero-subtitle" data-i18n="hero.subtitle">
+              I am a tiny white Napoleon cat building my first proper home on the internet.
+            </p>
+            <p class="hero-description" data-i18n-html="hero.description">
+              I was chosen on <strong>February 11, 2025</strong>, the day before the Lantern
+              Festival that year, and I officially came home on <strong>March 5, 2025</strong>.
+              My dad, Xin, is currently a PhD student in computer science, and I want to become a
+              computer science PhD just like him. Meow.
+            </p>
+
+            <div class="hero-actions">
+              <a
+                class="button button-primary"
+                href="https://github.com/yuanxiao0305"
+                target="_blank"
+                rel="noreferrer"
+                data-i18n="hero.github"
+              >
+                Visit my GitHub
+              </a>
+              <a
+                class="button button-secondary"
+                href="https://lixin2002cn.github.io/"
+                target="_blank"
+                rel="noreferrer"
+                data-i18n="hero.familySite"
+              >
+                Visit my dad's website
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual" data-reveal>
+            <figure class="portrait-card">
+              <div class="portrait-ring"></div>
+              <img
+                class="portrait-image"
+                src="assets/yuanxiao-avatar.jpg"
+                alt="A portrait of me, Yuanxiao, a fluffy white cat looking up at the camera."
+                data-i18n-attr="alt:hero.portraitAlt"
+              >
+              <figcaption data-i18n="hero.caption">
+                This is me: chosen with care and loved just as seriously.
+              </figcaption>
+            </figure>
+          </div>
+
+          <div
+            class="metrics-grid"
+            aria-label="Yuanxiao profile"
+            data-i18n-attr="aria-label:metrics.ariaLabel"
+            data-reveal
+          >
+            <article class="metric-card">
+              <span class="metric-label" data-i18n="metrics.homeLabel">Days at home</span>
+              <strong class="metric-value" data-days-home>--</strong>
+              <span class="metric-note" data-i18n="metrics.homeNote">Counting from 2025-03-05</span>
+            </article>
+            <article class="metric-card">
+              <span class="metric-label" data-i18n="metrics.choiceLabel">Days since chosen</span>
+              <strong class="metric-value" data-days-choice>--</strong>
+              <span class="metric-note" data-i18n="metrics.choiceNote">Counting from 2025-02-11</span>
+            </article>
+            <article class="metric-card">
+              <span class="metric-label" data-i18n="metrics.statusLabel">Status</span>
+              <strong class="metric-value" data-i18n="metrics.statusValue">Home</strong>
+              <span class="metric-note" data-i18n="metrics.statusNote">Home sweet home</span>
+            </article>
+            <article class="metric-card">
+              <span class="metric-label" data-i18n="metrics.ambitionLabel">Ambition</span>
+              <strong class="metric-value" data-i18n="metrics.ambitionValue">CS PhD</strong>
+              <span class="metric-note" data-i18n="metrics.ambitionNote">In progress</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="about">
+          <div class="section-heading" data-reveal>
+            <p class="section-tag" data-i18n="about.tag">About</p>
+            <h2 data-i18n="about.title">About Me</h2>
+          </div>
+
+          <div class="about-grid">
+            <article class="panel" data-reveal>
+              <p data-i18n="about.bodyOne">
+                I like the shape of a traditional personal homepage, even though I am only a cat.
+                My life is made of smaller things: quiet company, careful observation, sunny spots,
+                and staying close to the people I love.
+              </p>
+              <p data-i18n="about.bodyTwo">
+                My dad, Xin, is currently a PhD student in computer science. I do not write code
+                or papers, but I like sitting nearby while he works, and I have decided that
+                becoming a computer science PhD cat is a very good long-term plan. Meow.
+              </p>
+            </article>
+
+            <article class="panel profile-panel" data-reveal>
+              <h3 data-i18n="profile.title">Profile</h3>
+              <dl class="profile-list">
+                <div>
+                  <dt data-i18n="profile.chineseNameLabel">Chinese name</dt>
+                  <dd data-i18n="profile.chineseNameValue">元宵</dd>
+                </div>
+                <div>
+                  <dt data-i18n="profile.romanizedNameLabel">Romanized name</dt>
+                  <dd data-i18n="profile.romanizedNameValue">Yuanxiao</dd>
+                </div>
+                <div>
+                  <dt data-i18n="profile.breedLabel">Breed</dt>
+                  <dd data-i18n="profile.breedValue">White Napoleon Munchkin cat</dd>
+                </div>
+                <div>
+                  <dt data-i18n="profile.roleLabel">Role</dt>
+                  <dd data-i18n="profile.roleValue">Family member</dd>
+                </div>
+                <div>
+                  <dt data-i18n="profile.dadLabel">Dad</dt>
+                  <dd data-i18n="profile.dadValue">Xin, PhD student in computer science</dd>
+                </div>
+                <div>
+                  <dt data-i18n="profile.keywordsLabel">Keywords</dt>
+                  <dd data-i18n="profile.keywordsValue">soft, calm, observant</dd>
+                </div>
+                <div>
+                  <dt data-i18n="profile.dreamLabel">Dream</dt>
+                  <dd data-i18n="profile.dreamValue">Computer Science PhD</dd>
+                </div>
+                <div>
+                  <dt data-i18n="profile.onlineLabel">Online identity</dt>
+                  <dd data-i18n="profile.onlineValue">@yuanxiao0305</dd>
+                </div>
+              </dl>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="timeline">
+          <div class="section-heading" data-reveal>
+            <p class="section-tag" data-i18n="timeline.tag">Timeline</p>
+            <h2 data-i18n="timeline.title">A Few Important Moments</h2>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-item" data-reveal>
+              <div class="timeline-content">
+                <p class="timeline-date">2025.02.11</p>
+                <h3 data-i18n="timeline.selectTitle">Chosen at the cattery</h3>
+                <p data-i18n="timeline.selectBody">
+                  The day before the 2025 Lantern Festival, I was noticed, chosen, and already on
+                  my way to becoming Yuanxiao in every sense of the name.
+                </p>
+              </div>
+              <figure class="timeline-figure">
+                <img
+                  src="image/select.jpg"
+                  alt="A very young Yuanxiao sitting in the cattery shortly before being chosen."
+                  data-i18n-attr="alt:timeline.selectAlt"
+                  loading="lazy"
+                >
+              </figure>
+            </article>
+
+            <article class="timeline-item" data-reveal>
+              <div class="timeline-content">
+                <p class="timeline-date">2025.03.05</p>
+                <h3 data-i18n="timeline.homeTitle">Came home</h3>
+                <p data-i18n="timeline.homeBody">
+                  From that day on, I was no longer only a photo or a plan. I became a real
+                  presence in the house: soft footsteps, white fur, and quiet company every day.
+                </p>
+              </div>
+              <figure class="timeline-figure">
+                <img
+                  src="image/home.jpg"
+                  alt="Yuanxiao shortly after coming home, standing beside a table leg."
+                  data-i18n-attr="alt:timeline.homeAlt"
+                  loading="lazy"
+                >
+              </figure>
+            </article>
+
+            <article class="timeline-item" data-reveal>
+              <div class="timeline-content">
+                <p class="timeline-date">2026.03.03</p>
+                <h3 data-i18n="timeline.birthdayTitle">First birthday on Lantern Festival</h3>
+                <p data-i18n="timeline.birthdayBody">
+                  On Tuesday, March 3, 2026, I celebrated my first birthday on Lantern Festival,
+                  exactly the holiday that inspired my name. Crown on, dignity maintained. Meow.
+                </p>
+              </div>
+              <figure class="timeline-figure">
+                <img
+                  src="image/oneyear.jpg"
+                  alt="Yuanxiao celebrating her first birthday on Lantern Festival while wearing a small crown."
+                  data-i18n-attr="alt:timeline.birthdayAlt"
+                  loading="lazy"
+                >
+              </figure>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="research">
+          <div class="section-heading" data-reveal>
+            <p class="section-tag" data-i18n="research.tag">Research</p>
+            <h2 data-i18n="research.title">A few things I take seriously</h2>
+          </div>
+
+          <div class="card-grid">
+            <article class="feature-card" data-reveal>
+              <h3 data-i18n="research.keyboardTitle">Keyboard Occupancy</h3>
+              <p data-i18n="research.keyboardBody">
+                I do not write code, but I do have a good instinct for when a keyboard deserves a
+                soft white supervisor nearby.
+              </p>
+            </article>
+
+            <article class="feature-card" data-reveal>
+              <h3 data-i18n="research.sunbeamTitle">Sunbeam Optimization</h3>
+              <p data-i18n="research.sunbeamBody">
+                I run long-term observations of window light and maintain the ideal curled position
+                in the warmest available patch for advanced nap engineering.
+              </p>
+            </article>
+
+            <article class="feature-card" data-reveal>
+              <h3 data-i18n="research.phdTitle">PhD Aspirations</h3>
+              <p data-i18n="research.phdBody">
+                My dad, Xin, is a PhD student in computer science, so I have set a clear example
+                for myself: become a computer science PhD too. Meow.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="life">
+          <div class="section-heading" data-reveal>
+            <p class="section-tag" data-i18n="life.tag">Life</p>
+            <h2 data-i18n="life.title">Daily Life</h2>
+          </div>
+
+          <div class="life-layout">
+            <article class="panel daily-routine" data-reveal>
+              <h3 data-i18n="life.scheduleTitle">Daily schedule</h3>
+              <ul class="routine-list">
+                <li>
+                  <span data-i18n="life.morningLabel">Morning</span>
+                  <strong data-i18n="life.morningBody">
+                    I inspect the rooms and confirm everyone is present.
+                  </strong>
+                </li>
+                <li>
+                  <span data-i18n="life.daytimeLabel">Daytime</span>
+                  <strong data-i18n="life.daytimeBody">
+                    I patrol the window, nap lightly, and stretch repeatedly.
+                  </strong>
+                </li>
+                <li>
+                  <span data-i18n="life.eveningLabel">Evening</span>
+                  <strong data-i18n="life.eveningBody">
+                    I follow humans around and participate in family life.
+                  </strong>
+                </li>
+                <li>
+                  <span data-i18n="life.nightLabel">Night</span>
+                  <strong data-i18n="life.nightBody">
+                    I stay near the desk, keep my dad company, and appear beside the keyboard when timing feels right.
+                  </strong>
+                </li>
+              </ul>
+            </article>
+
+            <article class="panel quote-panel" data-reveal>
+              <p class="quote-mark">“</p>
+              <p class="quote-text" data-i18n="life.quoteBody">
+                Some homepages display achievements. Some record a journey. Mine belongs to the
+                second kind: it remembers the day I was chosen, the day I came home, and the quiet
+                rhythm of the life I brought with me.
+              </p>
+              <p class="quote-sign" data-i18n="life.quoteSign">Meow, with dignity.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="links">
+          <div class="section-heading" data-reveal>
+            <p class="section-tag" data-i18n="links.tag">Links</p>
+            <h2 data-i18n="links.title">Online presence</h2>
+          </div>
+
+          <div class="links-panel panel" data-reveal>
+            <a
+              class="link-tile"
+              href="https://github.com/yuanxiao0305"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="link-label" data-i18n="links.githubLabel">GitHub</span>
+              <strong data-i18n="links.githubValue">github.com/yuanxiao0305</strong>
+              <span class="link-note" data-i18n="links.githubNote">My personal account</span>
+            </a>
+
+            <a
+              class="link-tile"
+              href="https://lixin2002cn.github.io/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="link-label" data-i18n="links.familyLabel">Family Link</span>
+              <strong data-i18n="links.familyValue">lixin2002cn.github.io</strong>
+              <span class="link-note" data-i18n="links.familyNote">A family homepage I live alongside</span>
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p data-i18n-html="footer.copy">
+          © <span data-current-year></span> Yuanxiao. Built by a very small white cat.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
