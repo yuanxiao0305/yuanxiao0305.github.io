@@ -3,6 +3,13 @@ const MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000;
 
 const TRANSLATIONS = {
   en: {
+    play: {
+      skip: "Skip to content", badgeOne: "PhD cat in training", badgeTwo: "Professional desk companion",
+      stamp: "LOVED, DAILY", pet: "Give me a little head scratch", openPortrait: "View my portrait ↗",
+      album: "Yuanxiao’s family album", close: "Close photo", previous: "Previous photo", next: "Next photo",
+      openPhoto: "Open photo", photoHint: "Take a closer look ↗",
+      replies: ["My research can wait. Head scratches first.", "Purr… you found exactly the right spot.", "This keyboard is reserved for one small white cat.", "Lixia handles the music. I supervise the papers.", "One more scratch, then back to my very serious nap."],
+    },
     meta: {
       title: "Yuanxiao",
       description:
@@ -90,6 +97,11 @@ const TRANSLATIONS = {
         "On Tuesday, March 3, 2026, I celebrated my first birthday on Lantern Festival, exactly the holiday that inspired my name. Crown on, dignity maintained. Meow.",
       birthdayAlt:
         "Yuanxiao celebrating her first birthday on Lantern Festival while wearing a small crown.",
+      sistersTitle: "My little sister came home",
+      sistersBody:
+        "On May 5, 2026, my little sister Lixia came home. She is lively and dreams of becoming a musician, while I dream of a computer science PhD. From this day on, we share the same warm home. Meow.",
+      sistersAlt: "Yuanxiao, the white cat in front, and her calico little sister Lixia sitting behind her by the window.",
+      sistersOpen: "View the full photo of Yuanxiao and Lixia",
     },
     research: {
       tag: "Research",
@@ -130,12 +142,21 @@ const TRANSLATIONS = {
       familyLabel: "Family Link",
       familyValue: "lixin2002cn.github.io",
       familyNote: "A family homepage I live alongside",
+      sisterLabel: "My little sister, Lixia",
+      sisterNote: "My lively little sister, an aspiring musician",
     },
     footer: {
       copy: '© <span data-current-year></span> Yuanxiao. Built by a very small white cat.',
     },
   },
   zh: {
+    play: {
+      skip: "跳到正文", badgeOne: "博士猫预备役", badgeTwo: "书桌旁的陪伴专家",
+      stamp: "每天，都被爱着", pet: "摸摸我的小脑袋", openPortrait: "看看我的大头照 ↗",
+      album: "元宵的家庭相册", close: "关闭照片", previous: "上一张照片", next: "下一张照片",
+      openPhoto: "查看照片", photoHint: "点开，看看那时候的我 ↗",
+      replies: ["研究可以等一下，先摸摸头。", "呼噜呼噜……就是这里，再摸一下。", "这把键盘，已经被一只小白猫预约了。", "妹妹负责搞音乐，我负责监督爸爸写论文。", "再摸一下，我就继续认真地午睡。"],
+    },
     meta: {
       title: "元宵 | Yuanxiao",
       description:
@@ -221,6 +242,11 @@ const TRANSLATIONS = {
       birthdayBody:
         "2026 年 3 月 3 日，星期二，我在元宵节这一天过了一岁生日。这个节日给了我名字，那天我戴着小皇冠，也努力保持体面。喵。",
       birthdayAlt: "元宵在元宵节过一岁生日时戴着小皇冠的照片。",
+      sistersTitle: "妹妹到家了",
+      sistersBody:
+        "2026 年 5 月 5 日，妹妹立夏来到家里。她活泼好动，梦想成为音乐家；我想成为计算机博士。从这天起，我们有了同一个温暖的家。喵。",
+      sistersAlt: "元宵和妹妹立夏在窗边合影，白猫元宵趴在前方，三花立夏坐在后方。",
+      sistersOpen: "查看元宵和立夏的完整合影",
     },
     research: {
       tag: "兴趣",
@@ -257,6 +283,8 @@ const TRANSLATIONS = {
       familyLabel: "家人主页",
       familyValue: "lixin2002cn.github.io",
       familyNote: "和我一起生活的家人主页",
+      sisterLabel: "我的妹妹，立夏",
+      sisterNote: "活泼好动的小小音乐家，立夏的主页",
     },
     footer: {
       copy: '© <span data-current-year></span> 元宵 Yuanxiao。由一只很小的白猫搭建。',
@@ -265,6 +293,9 @@ const TRANSLATIONS = {
 };
 
 let currentLanguage = "en";
+let petReplyIndex = 0;
+let albumIndex = 0;
+let albumImages = [];
 
 function getTranslation(language, key) {
   const fallback = TRANSLATIONS.en;
@@ -338,6 +369,7 @@ function applyTranslations(language) {
   });
 
   hydrateMetrics();
+  updatePlayfulText();
 }
 
 function getInitialLanguage() {
@@ -398,9 +430,133 @@ function observeReveal() {
     }
   );
 
-  revealNodes.forEach((node) => observer.observe(node));
+  revealNodes.forEach((node) => {
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      node.classList.add("is-visible");
+    } else {
+      node.classList.add("reveal-ready");
+      observer.observe(node);
+    }
+  });
+}
+
+function updatePlayfulText() {
+  document.getElementById("cat-reply").textContent = getTranslation(currentLanguage, "play.replies")[petReplyIndex];
+  document.querySelectorAll("[data-photo-open]").forEach(link => {
+    const image = link.querySelector("img");
+    link.setAttribute("aria-label", `${getTranslation(currentLanguage, "play.openPhoto")}: ${image.alt}`);
+    link.dataset.photoHint = getTranslation(currentLanguage, "play.photoHint");
+  });
+  if (document.getElementById("photo-dialog").open) renderAlbumPhoto();
+}
+
+function initPetting() {
+  const button = document.querySelector("[data-pet]");
+  let lastPet = 0;
+  button.addEventListener("click", () => {
+    if (Date.now() - lastPet < 300) return;
+    lastPet = Date.now();
+    petReplyIndex = (petReplyIndex + 1) % getTranslation(currentLanguage, "play.replies").length;
+    updatePlayfulText();
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    for (let index = 0; index < 5; index++) {
+      const paw = document.createElement("span");
+      paw.className = "pet-paw paw-icon";
+      paw.setAttribute("aria-hidden", "true");
+      paw.style.setProperty("--paw-x", `${(index - 2) * 34}px`);
+      paw.style.setProperty("--paw-turn", `${(index - 2) * 18}deg`);
+      paw.style.animationDelay = `${index * 45}ms`;
+      button.appendChild(paw);
+      setTimeout(() => paw.remove(), 1300);
+    }
+  });
+}
+
+function renderAlbumPhoto() {
+  const source = albumImages[albumIndex];
+  const target = document.getElementById("album-photo");
+  target.src = source.src;
+  target.alt = source.alt;
+  const article = source.closest(".timeline-item");
+  const title = article ? article.querySelector("h3").textContent : getTranslation(currentLanguage, "hero.caption");
+  const date = article?.querySelector(".timeline-date").textContent;
+  document.getElementById("album-caption").textContent = date ? `${date} · ${title}` : title;
+  document.getElementById("album-count").textContent = `${albumIndex + 1} / ${albumImages.length}`;
+}
+
+function initPhotoAlbum() {
+  const dialog = document.getElementById("photo-dialog");
+  if (typeof dialog.showModal !== "function") return;
+  albumImages = [...document.querySelectorAll(".portrait-image, .timeline-figure img")];
+  albumImages.forEach((image, index) => {
+    let link;
+    if (image.classList.contains("portrait-image")) {
+      link = document.querySelector(".portrait-expand");
+    } else {
+      link = image.closest("a");
+      if (!link) {
+        link = document.createElement("a");
+        link.href = image.getAttribute("src");
+        image.replaceWith(link);
+        link.appendChild(image);
+      }
+      link.dataset.photoOpen = "";
+    }
+    link.addEventListener("click", event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      albumIndex = index;
+      renderAlbumPhoto();
+      dialog.showModal();
+      document.body.classList.add("album-open");
+    });
+  });
+  const move = direction => {
+    albumIndex = (albumIndex + direction + albumImages.length) % albumImages.length;
+    renderAlbumPhoto();
+  };
+  document.getElementById("photo-close").addEventListener("click", () => dialog.close());
+  document.getElementById("photo-prev").addEventListener("click", () => move(-1));
+  document.getElementById("photo-next").addEventListener("click", () => move(1));
+  dialog.addEventListener("keydown", event => {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      move(event.key === "ArrowLeft" ? -1 : 1);
+    }
+  });
+  dialog.addEventListener("click", event => {
+    const rect = dialog.getBoundingClientRect();
+    if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
+  });
+  dialog.addEventListener("close", () => document.body.classList.remove("album-open"));
+  updatePlayfulText();
+}
+
+function initSectionNavigation() {
+  const links = [...document.querySelectorAll(".site-nav a")];
+  let scheduled = false;
+  function update() {
+    scheduled = false;
+    let current;
+    for (const link of links) {
+      if (document.querySelector(link.hash).getBoundingClientRect().top <= innerHeight * 0.4) current = link;
+    }
+    links.forEach(link => {
+      if (link === current) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+  }
+  window.addEventListener("scroll", () => {
+    if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  window.addEventListener("resize", update);
+  update();
 }
 
 initLanguageSwitcher();
 applyTranslations(getInitialLanguage());
 observeReveal();
+initPetting();
+initPhotoAlbum();
+initSectionNavigation();

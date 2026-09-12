@@ -28,6 +28,7 @@
     <script defer src="script.js"></script>
   </head>
   <body>
+    <a class="skip-link" href="#top" data-i18n="play.skip">Skip to content</a>
     <div class="orb orb-left" aria-hidden="true"></div>
     <div class="orb orb-right" aria-hidden="true"></div>
 
@@ -69,6 +70,10 @@
           <div class="hero-copy" data-reveal>
             <p class="eyebrow" data-i18n="hero.eyebrow">GitHub Pages for @yuanxiao0305</p>
             <h1 data-i18n="hero.name">Yuanxiao</h1>
+            <div class="cat-badges" aria-hidden="true">
+              <span data-i18n="play.badgeOne">PhD cat in training</span>
+              <span data-i18n="play.badgeTwo">Professional desk companion</span>
+            </div>
             <p class="hero-subtitle" data-i18n="hero.subtitle">
               I am a tiny white Napoleon cat building my first proper home on the internet.
             </p>
@@ -103,16 +108,22 @@
 
           <div class="hero-visual" data-reveal>
             <figure class="portrait-card">
-              <div class="portrait-ring"></div>
+              <div class="portrait-ring" aria-hidden="true"></div>
+              <div class="portrait-stamp" aria-hidden="true"><span class="paw-icon"></span><span data-i18n="play.stamp">LOVED, DAILY</span></div>
+              <button class="pet-portrait" type="button" data-pet data-i18n-attr="aria-label:play.pet" aria-label="Give Yuanxiao a little head scratch">
               <img
                 class="portrait-image"
                 src="assets/yuanxiao-avatar.jpg"
                 alt="A portrait of me, Yuanxiao, a fluffy white cat looking up at the camera."
                 data-i18n-attr="alt:hero.portraitAlt"
               >
+              <span class="pet-hint"><span class="paw-icon" aria-hidden="true"></span><span data-i18n="play.pet">Give me a little head scratch</span></span>
+              </button>
+              <div class="cat-reply" role="status" aria-live="polite"><span aria-hidden="true">“</span><p id="cat-reply">My research can wait. Head scratches first.</p></div>
               <figcaption data-i18n="hero.caption">
                 This is me: chosen with care and loved just as seriously.
               </figcaption>
+              <a class="portrait-expand" href="assets/yuanxiao-avatar.jpg" data-i18n="play.openPortrait">View my portrait ↗</a>
             </figure>
           </div>
 
@@ -268,6 +279,26 @@
                 >
               </figure>
             </article>
+
+            <article class="timeline-item" id="lixia-home" data-reveal>
+              <div class="timeline-content">
+                <p class="timeline-date"><time datetime="2026-05-05">2026.05.05</time></p>
+                <h3 data-i18n="timeline.sistersTitle">My little sister came home</h3>
+                <p data-i18n="timeline.sistersBody">
+                  On May 5, 2026, my little sister Lixia came home. She is lively and dreams
+                  of becoming a musician, while I dream of a computer science PhD. From this
+                  day on, we share the same warm home. Meow.
+                </p>
+              </div>
+              <figure class="timeline-figure sisters-figure">
+                <a href="image/yuanxiao-and-lixia.jpg" target="_blank" rel="noopener noreferrer"
+                  data-i18n-attr="aria-label:timeline.sistersOpen" aria-label="View the full photo of Yuanxiao and Lixia">
+                  <img src="image/yuanxiao-and-lixia.jpg" width="1280" height="960" loading="lazy"
+                    alt="Yuanxiao, the white cat in front, and her calico little sister Lixia sitting behind her by the window."
+                    data-i18n-attr="alt:timeline.sistersAlt">
+                </a>
+              </figure>
+            </article>
           </div>
         </section>
 
@@ -279,6 +310,7 @@
 
           <div class="card-grid">
             <article class="feature-card" data-reveal>
+              <span class="research-icon keyboard-icon" aria-hidden="true">⌨</span>
               <h3 data-i18n="research.keyboardTitle">Keyboard Occupancy</h3>
               <p data-i18n="research.keyboardBody">
                 I do not write code, but I do have a good instinct for when a keyboard deserves a
@@ -287,6 +319,7 @@
             </article>
 
             <article class="feature-card" data-reveal>
+              <span class="research-icon sun-icon" aria-hidden="true">☼</span>
               <h3 data-i18n="research.sunbeamTitle">Sunbeam Optimization</h3>
               <p data-i18n="research.sunbeamBody">
                 I run long-term observations of window light and maintain the ideal curled position
@@ -295,6 +328,7 @@
             </article>
 
             <article class="feature-card" data-reveal>
+              <span class="research-icon" aria-hidden="true">✧</span>
               <h3 data-i18n="research.phdTitle">PhD Aspirations</h3>
               <p data-i18n="research.phdBody">
                 My dad, Xin, is a PhD student in computer science, so I have set a clear example
@@ -381,15 +415,33 @@
               <strong data-i18n="links.familyValue">lixin2002cn.github.io</strong>
               <span class="link-note" data-i18n="links.familyNote">A family homepage I live alongside</span>
             </a>
+
+            <a
+              class="link-tile"
+              href="https://lixia0505.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="link-label" data-i18n="links.sisterLabel">My little sister, Lixia</span>
+              <strong>lixia0505.github.io</strong>
+              <span class="link-note" data-i18n="links.sisterNote">My lively little sister, an aspiring musician</span>
+            </a>
           </div>
         </section>
       </main>
 
       <footer class="site-footer">
+        <div class="footer-paws" aria-hidden="true"><span class="paw-icon"></span><span class="paw-icon"></span><span class="paw-icon"></span></div>
         <p data-i18n-html="footer.copy">
           © <span data-current-year></span> Yuanxiao. Built by a very small white cat.
         </p>
       </footer>
     </div>
+    <dialog class="photo-dialog" id="photo-dialog" aria-labelledby="photo-dialog-title">
+      <div class="photo-dialog-header"><p id="photo-dialog-title" data-i18n="play.album">Yuanxiao’s family album</p><button type="button" id="photo-close" data-i18n-attr="aria-label:play.close" aria-label="Close photo">×</button></div>
+      <img id="album-photo" alt="">
+      <div class="photo-dialog-controls"><button type="button" id="photo-prev" data-i18n-attr="aria-label:play.previous" aria-label="Previous photo">←</button><p id="album-caption" aria-live="polite"></p><button type="button" id="photo-next" data-i18n-attr="aria-label:play.next" aria-label="Next photo">→</button></div>
+      <p id="album-count"></p>
+    </dialog>
   </body>
 </html>
